@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material 3 Button Styles -->
+    <style name="Widget.Nutrifill.Button" parent="Widget.Material3.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/brand_primary</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <!-- Material 3 Outlined Button Style -->
+    <style name="Widget.Nutrifill.Button.OutlinedButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/brand_primary</item>
+        <item name="android:textColor">@color/brand_primary</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <!-- Material 3 Text Button Style -->
+    <style name="Widget.Nutrifill.Button.TextButton" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textColor">@color/brand_primary</item>
+        <item name="rippleColor">@color/brand_accent</item>
+    </style>
+
+    <!-- Material 3 Card Style -->
+    <style name="Widget.Nutrifill.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="cardBackgroundColor">@color/card_background</item>
+    </style>
+
+    <!-- Material 3 TextField Style -->
+    <style name="Widget.Nutrifill.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/brand_primary</item>
+        <item name="hintTextColor">@color/brand_secondary</item>
+    </style>
+
+    <!-- Material 3 Bottom Navigation Style -->
+    <style name="Widget.Nutrifill.BottomNavigation" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemIconTint">@color/brand_primary</item>
+        <item name="itemTextColor">@color/text_primary</item>
+        <item name="backgroundTint">@color/card_background</item>
+    </style>
+</resources>

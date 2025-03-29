@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">NutriFill</string>
+
+    <string name="prompt_gender">Select Gender</string>
+    <string name="prompt_activity_status">Select Activity Status</string>
+
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="activity_status_array">
+        <item>Active</item>
+        <item>Moderately Active</item>
+        <item>Inactive</item>
+    </string-array>
+
+    <string-array name="gender_options">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="diet_options">
+        <item>Vegetarian</item>
+        <item>Non-Vegetarian</item>
+        <item>Vegan</item>
+    </string-array>
+
+    <string-array name="activity_levels">
+        <item>Active</item>
+        <item>Moderately Active</item>
+        <item>Inactive</item>
+    </string-array>
+
+    <string-array name="meal_types" translatable="false">
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+        <item>Snacks</item>
+    </string-array>
+
+    <string-array name="health_goals" translatable="false">
+        <item>Weight Loss</item>
+        <item>Muscle Gain</item>
+        <item>Maintain Weight</item>
+        <item>Increase Energy</item>
+    </string-array>
+</resources>

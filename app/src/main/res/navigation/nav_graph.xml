@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/foodListFragment">
+
+    <fragment
+        android:id="@+id/foodListFragment"
+        android:name="com.example.nutrifill.ui.FoodListFragment"
+        android:label="Food List">
+        <action
+            android:id="@+id/action_foodListFragment_to_addFoodFragment"
+            app:destination="@id/addFoodFragment" />
+        <action
+            android:id="@+id/action_foodListFragment_to_foodDetailFragment"
+            app:destination="@id/foodDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addFoodFragment"
+        android:name="com.example.nutrifill.ui.AddFoodFragment"
+        android:label="Add Food" />
+
+    <fragment
+        android:id="@+id/foodDetailFragment"
+        android:name="com.example.nutrifill.ui.FoodDetailFragment"
+        android:label="Food Details">
+        <argument
+            android:name="foodId"
+            app:argType="long" />
+    </fragment>
+
+</navigation>
