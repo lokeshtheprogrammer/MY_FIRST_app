@@ -1,9 +1,14 @@
+package com.example.nutrifill.utils
+
+import java.io.IOException
+import retrofit2.HttpException
+
 object ErrorHandler {
     fun handleScanningError(error: Exception): String {
         return when (error) {
             is IOException -> "Network error: Please check your internet connection"
             is SecurityException -> "Camera permission denied"
-            is retrofit2.HttpException -> {
+            is HttpException -> {
                 when (error.code()) {
                     401 -> "Authentication failed"
                     429 -> "Too many requests. Please try again later"

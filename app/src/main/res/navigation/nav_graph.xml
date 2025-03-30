@@ -1,30 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/foodListFragment">
 
     <fragment
         android:id="@+id/foodListFragment"
         android:name="com.example.nutrifill.ui.FoodListFragment"
-        android:label="Food List">
+        android:label="Food List"
+        tools:layout="@layout/fragment_food_list">
+        
         <action
-            android:id="@+id/action_foodListFragment_to_addFoodFragment"
+            android:id="@+id/actionFoodListToAdd"
             app:destination="@id/addFoodFragment" />
+            
         <action
-            android:id="@+id/action_foodListFragment_to_foodDetailFragment"
-            app:destination="@id/foodDetailFragment" />
+            android:id="@+id/actionFoodListToDetail"
+            app:destination="@id/foodDetailFragment">
+            <argument
+                android:name="foodId"
+                app:argType="long" />
+        </action>
     </fragment>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=".\gradlew clean&#xA;.\gradlew build&#xA;" />
     <fragment
         android:id="@+id/addFoodFragment"
         android:name="com.example.nutrifill.ui.AddFoodFragment"
-        android:label="Add Food" />
+        android:label="Add Food"
+        tools:layout="@layout/fragment_add_food" />
 
     <fragment
         android:id="@+id/foodDetailFragment"
         android:name="com.example.nutrifill.ui.FoodDetailFragment"
-        android:label="Food Details">
+        android:label="Food Details"
+        tools:layout="@layout/fragment_food_detail">
         <argument
             android:name="foodId"
             app:argType="long" />

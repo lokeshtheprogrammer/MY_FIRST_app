@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.nutrifill.databinding.FragmentFoodDetailBinding
 import com.example.nutrifill.viewmodel.FoodViewModel
 import kotlinx.coroutines.launch
+import com.example.nutrifill.models.FoodDetails
 
 class FoodDetailFragment : Fragment() {
     private var _binding: FragmentFoodDetailBinding? = null

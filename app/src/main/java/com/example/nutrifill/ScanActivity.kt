@@ -25,142 +25,68 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 class ScanActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityScannerBinding
-    private val viewModel: ScannerViewModel by viewModels()
+    private lateinit var binding: ActivityScanBinding
+    private lateinit var progressBar: ProgressBar
     private var imageCapture: ImageCapture? = null
-    private lateinit var cameraExecutor: ExecutorService
-    private val imageLabeler = ImageLabeling.getClient(ImageLabelerOptions.DEFAULT_OPTIONS)
-
-    companion object {
-        private const val TAG = "ScanActivity"
-        private const val REQUEST_CODE_PERMISSIONS = 10
-        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
-    }
+    private lateinit var cameraProvider: ProcessCameraProvider
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityScannerBinding.inflate(layoutInflater)
+        binding = ActivityScanBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (allPermissionsGranted()) {
-            startCamera()
-        } else {
-            ActivityCompat.requestPermissions(
-                this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
-            )
-        }
+        // Initialize progressBar
+        progressBar = binding.progressBar
 
-        cameraExecutor = Executors.newSingleThreadExecutor()
-        setupUI()
-        observeViewModel()
+        // Initialize camera
+        startCamera()
     }
 
-    private fun setupUI() {
-        binding.captureButton.setOnClickListener {
-            takePhoto()
-        }
+    private fun showFoodDetailsDialog(foodDetails: String) {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Food Details")
+            .setMessage(foodDetails)
+            .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+            .show()
     }
 
-    private fun observeViewModel() {
-        viewModel.scanResult.observe(this) { result ->
-            showFoodDetailsDialog(result)
-        }
-
-        viewModel.isLoading.observe(this) { isLoading ->
-            binding.progressBar.isVisible = isLoading
-            binding.captureButton.isEnabled = !isLoading
-        }
-
-        viewModel.error.observe(this) { error ->
-            showError(error)
-        }
+    private fun setLoading(isLoading: Boolean) {
+        progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
-
         cameraProviderFuture.addListener({
-            val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
+            cameraProvider = cameraProviderFuture.get()
+            
+            val preview = Preview.Builder().build()
+            preview.setSurfaceProvider(binding.viewFinder.surfaceProvider)
 
-            val preview = Preview.Builder()
-                .build()
-                .also {
-                    it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
-                }
-
-            imageCapture = ImageCapture.Builder()
-                .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
-                .build()
-
-            val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+            imageCapture = ImageCapture.Builder().build()
 
             try {
                 cameraProvider.unbindAll()
                 cameraProvider.bindToLifecycle(
-                    this, cameraSelector, preview, imageCapture
+                    this,
+                    CameraSelector.DEFAULT_BACK_CAMERA,
+                    preview,
+                    imageCapture
                 )
-            } catch (exc: Exception) {
-                Log.e(TAG, "Use case binding failed", exc)
+            } catch (e: Exception) {
+                Log.e(TAG, "Use case binding failed", e)
             }
         }, ContextCompat.getMainExecutor(this))
     }
 
-    private fun takePhoto() {
-        val imageCapture = imageCapture ?: return
-        viewModel.setLoading(true)
-
-        imageCapture.takePicture(
-            ContextCompat.getMainExecutor(this),
-            object : ImageCapture.OnImageCapturedCallback() {
-                override fun onCaptureSuccess(image: ImageProxy) {
-                    processImage(image)
-                    image.close()
-                }
-
-                override fun onError(exc: ImageCaptureException) {
-                    viewModel.setLoading(false)
-                    showError("Photo capture failed: ${exc.message}")
-                }
-            })
+    private fun processImage(image: InputImage) {
+        setLoading(true)
+        // Convert InputImage to ByteArray if needed
+        val byteArray = // conversion logic here
+        // Use the byteArray for your API call
+        setLoading(false)
     }
 
-    private fun processImage(imageProxy: ImageProxy) {
-        val mediaImage = imageProxy.image
-        if (mediaImage != null) {
-            val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
-            viewModel.analyzeImage(image)
-        }
-    }
-
-    private fun showError(message: String) {
-        MaterialAlertDialogBuilder(this)
-            .setTitle("Error")
-            .setMessage(message)
-            .setPositiveButton("OK", null)
-            .show()
-    }
-
-    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
-        ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        cameraExecutor.shutdown()
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_CODE_PERMISSIONS) {
-            if (allPermissionsGranted()) {
-                startCamera()
-            } else {
-                finish()
-            }
-        }
+    companion object {
+        private const val TAG = "ScanActivity"
     }
 }

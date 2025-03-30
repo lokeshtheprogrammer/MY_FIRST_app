@@ -16,12 +16,12 @@ import com.example.nutrifill.viewmodel.FoodViewModel
 import com.example.nutrifill.ui.adapter.FoodAdapter
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import java.util.*
 
 class FoodListFragment : Fragment() {
     private var _binding: FragmentFoodListBinding? = null
     private val binding get() = _binding!!
     private val viewModel: FoodViewModel by viewModels()
-    private lateinit var foodAdapter: FoodAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,31 +34,24 @@ class FoodListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupRecyclerView()
-        observeFoods()
+        setupObservers()
         setupClickListeners()
     }
 
-    private fun setupRecyclerView() {
-        foodAdapter = FoodAdapter { food ->
-            // Navigate to food detail screen
-            findNavController().navigate(
-                FoodListFragmentDirections.actionFoodListFragmentToFoodDetailFragment(food.id)
-            )
-        }
-        binding.foodRecyclerView.apply {
-            adapter = foodAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-            addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
+    private fun setupObservers() {
+        viewModel.foods.observe(viewLifecycleOwner) { foods ->
+            // Update your RecyclerView adapter here
         }
     }
 
-    private fun setupClickListeners() {
-        binding.addFoodButton.setOnClickListener {
-            findNavController().navigate(
-                FoodListFragmentDirections.actionFoodListFragmentToAddFoodFragment()
-            )
-        }
+    private fun navigateToFoodDetail(foodId: Long) {
+        val action = FoodListFragmentDirections.actionFoodListToDetail(foodId)
+        findNavController().navigate(action)
+    }
+
+    private fun navigateToAddFood() {
+        val action = FoodListFragmentDirections.actionFoodListToAdd()
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

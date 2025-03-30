@@ -2,24 +2,11 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
-    alias(libs.plugins.ksp)  // Changed to use the version from libs.versions.toml
+    alias(libs.plugins.ksp)
 }
 android {
     namespace = "com.example.nutrifill"
     compileSdk = 34
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-
-    buildFeatures {
-        buildConfig = true
-    }
 
     defaultConfig {
         applicationId = "com.example.nutrifill"
@@ -29,8 +16,33 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "CLARIFAI_PAT", "\"2f3d78399e8a46aba15056fcfe9e9bc2\"")
-        buildConfigField("String", "BASE_URL", "\"https://api.clarifai.com/v2/\"")
+    }
+
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField("String", "CLARIFAI_PAT", "\"2f3d78399e8a46aba15056fcfe9e9bc2\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.clarifai.com/v2/\"")
+        }
+        release {
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            buildConfigField("String", "CLARIFAI_PAT", "\"2f3d78399e8a46aba15056fcfe9e9bc2\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.clarifai.com/v2/\"")
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
     }
 }
 
@@ -39,7 +51,19 @@ ksp {
     arg("room.schemaLocation", "$projectDir/schemas")
 }
 
+configurations.all {
+    resolutionStrategy {
+        eachDependency {
+            if (requested.group == "org.jetbrains.kotlin") {
+                useVersion("1.9.22")  // Updated Kotlin version
+            }
+        }
+    }
+}
+
 dependencies {
+    // Move all implementation declarations here
+    // Don't declare dependencies in other locations
     // Core dependencies
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -52,6 +76,8 @@ dependencies {
     implementation("com.google.mlkit:object-detection:17.0.0")
     implementation("com.google.mlkit:image-labeling:17.0.7")
     implementation("com.google.android.gms:play-services-mlkit-image-labeling:16.0.8")
+      // Material Design
+      implementation("com.google.android.material:material:1.11.0")
 
     // CameraX
     val cameraxVersion = "1.3.1"
@@ -90,4 +116,8 @@ dependencies {
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
+    
+    // Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
 }

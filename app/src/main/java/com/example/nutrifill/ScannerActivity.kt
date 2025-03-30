@@ -1,10 +1,12 @@
 package com.example.nutrifill
 
 import android.Manifest
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -15,10 +17,11 @@ import androidx.camera.core.Preview
 import androidx.camera.core.*
 import androidx.camera.core.ExperimentalGetImage
 import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.camera.view.PreviewView
-import androidx.core.app.ActivityCompat
 import androidx.lifecycle.LifecycleOwner
 import com.google.common.util.concurrent.ListenableFuture
 import java.util.concurrent.ExecutionException
@@ -28,6 +31,11 @@ import java.util.concurrent.Executors
 // Add this import at the top
 import androidx.camera.core.ExperimentalGetImage
 import com.example.nutrifill.models.FoodDetails
+import androidx.activity.viewModels
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.common.util.concurrent.ListenableFuture
+import com.example.nutrifill.databinding.ActivityScannerBinding
+import com.example.nutrifill.viewmodels.ScannerViewModel
 
 // Add the annotation to the class
 @OptIn(ExperimentalGetImage::class)
@@ -54,7 +62,7 @@ class ScannerActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        binding.captureButton.setOnClickListener {
+        binding.captureButton.setOnClickListener { _: View ->
             takePhoto()
         }
 
@@ -66,10 +74,10 @@ class ScannerActivity : AppCompatActivity() {
             MaterialAlertDialogBuilder(this)
                 .setTitle("Error")
                 .setMessage(error)
-                .setPositiveButton("Retry") { dialog: DialogInterface, _: Int ->
+                .setPositiveButton("Retry") { dialog: DialogInterface, which: Int ->
                     retryLastAction()
                 }
-                .setNegativeButton("Cancel") { dialog: DialogInterface, _: Int ->
+                .setNegativeButton("Cancel") { dialog: DialogInterface, which: Int ->
                     dialog.dismiss()
                 }
                 .show()
@@ -85,12 +93,16 @@ class ScannerActivity : AppCompatActivity() {
     }
 
     private fun setupErrorHandling() {
-        viewModel.error.observe(this) { error ->
+        viewModel.error.observe(this) { error: String ->
             MaterialAlertDialogBuilder(this)
                 .setTitle("Error")
                 .setMessage(error)
-                .setPositiveButton("Retry") { _, _ -> retryLastAction() }
-                .setNegativeButton("Cancel", null)
+                .setPositiveButton("Retry") { dialog: DialogInterface, which: Int -> 
+                    retryLastAction() 
+                }
+                .setNegativeButton("Cancel") { dialog: DialogInterface, which: Int -> 
+                    dialog.dismiss() 
+                }
                 .show()
         }
     }
@@ -130,7 +142,6 @@ class ScannerActivity : AppCompatActivity() {
             .setTitle("Food Details")
             .setMessage("Name: ${foodDetails.name}\nCalories: ${foodDetails.calories}")
             .setPositiveButton("Add") { dialog: DialogInterface, _: Int ->
-                // Add food to tracking
                 dialog.dismiss()
             }
             .setNegativeButton("Cancel") { dialog: DialogInterface, _: Int ->
