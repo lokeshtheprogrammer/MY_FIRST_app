@@ -4,9 +4,9 @@
     <string name="voice_accessibility_service_description">NutriFill Voice Assistant provides complete voice control and accessibility features for food recognition and nutrition tracking.</string>
     
     <!-- Voice Command Prompts -->
-    <string name="voice_prompt_start">Voice assistant ready. Say "help" for available commands.</string>
-    <string name="voice_prompt_listening">Listening…</string>
-    <string name="voice_prompt_processing">Processing your request…</string>
+    <string name="voice_prompt_start">Voice assistant ready. Say \"help\" for available commands.</string>
+    <string name="voice_prompt_listening">Listening...</string>
+    <string name="voice_prompt_processing">Processing your request...</string>
     <string name="voice_prompt_error">Sorry, I didn't catch that. Please try again.</string>
     
     <!-- Navigation Prompts -->
