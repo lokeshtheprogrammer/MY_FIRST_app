@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Night Mode Theme -->
+    <style name="Theme.Nutrifill" parent="Theme.Material3.DayNight">
+        <!-- Primary Brand Colors (Darker Shades) -->
+        <item name="colorPrimary">@color/brand_accent</item>
+        <item name="colorPrimaryContainer">@color/brand_primary</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorOnPrimaryContainer">@color/white</item>
+
+        <!-- Secondary Brand Colors (Darker Shades) -->
+        <item name="colorSecondary">@color/teal_100</item>
+        <item name="colorSecondaryContainer">@color/teal_500</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondaryContainer">@color/white</item>
+
+        <!-- Tertiary Colors -->
+        <item name="colorTertiary">@color/teal_100</item>
+        <item name="colorTertiaryContainer">@color/teal_500</item>
+        <item name="colorOnTertiary">@color/black</item>
+        <item name="colorOnTertiaryContainer">@color/white</item>
+
+        <!-- Dark Mode Background -->
+        <item name="android:windowBackground">@color/background_dark</item>
+        <item name="colorSurface">@color/background_dark</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorSurfaceVariant">@color/text_secondary</item>
+        <item name="colorOnSurfaceVariant">@color/light_gray</item>
+        <item name="android:statusBarColor">@color/brand_primary</item>
+    </style>
+
+</resources>

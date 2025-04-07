@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Language Preferences -->
+    <string-array name="language_entries">
+        <item>English</item>
+        <item>Spanish</item>
+        <item>French</item>
+        <item>German</item>
+        <item>Chinese</item>
+    </string-array>
+
+    <string-array name="language_values">
+        <item>en</item>
+        <item>es</item>
+        <item>fr</item>
+        <item>de</item>
+        <item>zh</item>
+    </string-array>
+
+    <!-- Dietary Restriction Preferences -->
+    <string-array name="dietary_restriction_entries">
+        <item>Vegetarian</item>
+        <item>Vegan</item>
+        <item>Gluten-Free</item>
+        <item>Dairy-Free</item>
+        <item>Nut-Free</item>
+        <item>Halal</item>
+        <item>Kosher</item>
+    </string-array>
+
+    <string-array name="dietary_restriction_values">
+        <item>vegetarian</item>
+        <item>vegan</item>
+        <item>gluten_free</item>
+        <item>dairy_free</item>
+        <item>nut_free</item>
+        <item>halal</item>
+        <item>kosher</item>
+    </string-array>
+
+    <!-- Notification Type Preferences -->
+    <string-array name="notification_type_entries">
+        <item>Meal Reminders</item>
+        <item>Water Intake</item>
+        <item>Daily Summary</item>
+        <item>Weekly Report</item>
+        <item>Goal Updates</item>
+    </string-array>
+
+    <string-array name="notification_type_values">
+        <item>meal_reminder</item>
+        <item>water_intake</item>
+        <item>daily_summary</item>
+        <item>weekly_report</item>
+        <item>goal_updates</item>
+    </string-array>
+
+    <!-- Portion Units -->
+    <string-array name="portion_units">
+        <item>g</item>
+        <item>oz</item>
+        <item>cup</item>
+        <item>tbsp</item>
+        <item>tsp</item>
+        <item>ml</item>
+        <item>serving</item>
+        <item>piece</item>
+    </string-array>
+
+    <!-- Food Categories for Manual Entry -->
+    <string-array name="food_categories">
+        <item>Fruits</item>
+        <item>Vegetables</item>
+        <item>Grains</item>
+        <item>Protein Foods</item>
+        <item>Dairy</item>
+        <item>Snacks</item>
+        <item>Beverages</item>
+        <item>Other</item>
+    </string-array>
+</resources>

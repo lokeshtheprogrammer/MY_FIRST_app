@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Default Material Colors -->
+    <color name="purple_200">#BB86FC</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
+
+    <!-- Standard Colors -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="teal_100">#B2DFDB</color> <!-- Light Teal Color -->
+    <color name="teal_500">#009688</color> <!-- Standard Teal Color -->
+    <color name="red">#F44336</color> <!-- Standard Red Color -->
+
+
+    <!-- Brand Colors -->
+    <color name="primary">#D4A5A5</color> <!-- Main Brand Color -->
+    <color name="brand_primary">#D4A5A5</color> <!-- Main Brand Color -->
+    <color name="brand_primary_light">#E8C1C1</color> <!-- Light Primary Color -->
+    <color name="brand_secondary">#B38B8B</color> <!-- Darker for Pressed/Inactive States -->
+    <color name="brand_accent">#E8C1C1</color> <!-- Light Accent Color -->
+
+    <!-- Text Colors -->
+    <color name="text_primary">#212121</color> <!-- Primary Text Color -->
+    <color name="text_secondary">#666666</color> <!-- Secondary/Subheading Text -->
+
+    <!-- Background Colors -->
+    <color name="background_light">#F5F5F5</color> <!-- Light Mode Background -->
+    <color name="background_dark">#1E1E1E</color> <!-- Dark Mode Background -->
+    <color name="light_gray">#F5F5F5</color> <!-- Light Gray for Inputs -->
+
+    <!-- Button Colors -->
+    <color name="button_primary">#D4A5A5</color> <!-- Main Button Background -->
+    <color name="button_pressed">#B38B8B</color> <!-- Button Pressed State -->
+    <color name="button_text">#FFFFFF</color> <!-- Button Text Color -->
+
+    <!-- Card & Shadow Colors -->
+    <color name="card_background">#FFFFFF</color> <!-- Card Background -->
+    <color name="shadow_color">#40000000</color> <!-- Light Shadow Effect -->
+
+    <!-- Status Indicator Colors -->
+    <color name="success_green">#4CAF50</color> <!-- Success Messages -->
+    <color name="warning_orange">#FF9800</color> <!-- Warning Messages -->
+    <color name="error_red">#F44336</color> <!-- Error Messages -->
+
+
+</resources>

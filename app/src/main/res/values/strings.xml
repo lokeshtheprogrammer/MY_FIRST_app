@@ -1,0 +1,76 @@
+<resources>
+    <string name="app_name">NutriFill</string>
+
+    <string name="prompt_gender">Select Gender</string>
+    <string name="prompt_activity_status">Select Activity Status</string>
+    <string name="point_camera_at_food_item">Point camera at food item</string>
+
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="activity_status_array">
+        <item>Active</item>
+        <item>Moderately Active</item>
+        <item>Inactive</item>
+    </string-array>
+
+    <string-array name="gender_options">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="diet_options">
+        <item>Vegetarian</item>
+        <item>Non-Vegetarian</item>
+        <item>Vegan</item>
+    </string-array>
+
+    <string-array name="activity_levels">
+        <item>Active</item>
+        <item>Moderately Active</item>
+        <item>Inactive</item>
+    </string-array>
+
+    <string-array name="meal_types" translatable="false">
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+        <item>Snacks</item>
+    </string-array>
+
+    <string-array name="health_goals" translatable="false">
+        <item>Weight Loss</item>
+        <item>Muscle Gain</item>
+        <item>Maintain Weight</item>
+        <item>Increase Energy</item>
+    </string-array>
+
+    <string name="add_manual_entry">Add Manual Entry</string>
+
+    <string name="captured_food_image">Captured Food Image</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="confirm">Confirm</string>
+
+    <!-- Scan Activity Strings -->
+    <string name="food_image">Food Image</string>
+    <string name="scan_instructions">Position your food item in the camera frame</string>
+    <string name="capture">Capture</string>
+    <string name="analyze">Analyze</string>
+
+    <!-- Error Messages -->
+    <string name="error_invalid_portion_size">Invalid portion size</string>
+    <string name="error_empty_food_name">Food name cannot be empty</string>
+    <string name="error_empty_portion_unit">Portion unit cannot be empty</string>
+    <string name="error_invalid_calories">Invalid calories value</string>
+    <string name="error_no_food_detected">No food detected in the image</string>
+    <string name="error_food_recognition_failed">Food recognition failed</string>
+    <string name="error_camera_permission_required">Camera permission is required</string>
+
+    <!-- Prompts -->
+    <string name="scan_camera_prompt">Point camera at food item</string>
+    <string name="manual_entry_prompt">Enter food details manually</string>
+</resources>

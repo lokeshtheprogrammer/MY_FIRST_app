@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_nutrition_tracking"
+        android:title="Nutrition Tracking"
+        android:icon="@drawable/ic_chart_placeholder"/>
+    <item
+        android:id="@+id/menu_scan_food"
+        android:title="Scan Food"
+        android:icon="@drawable/ic_camera"/>
+    <item
+        android:id="@+id/menu_history"
+        android:title="History"
+        android:icon="@drawable/ic_history"/>
+    <item
+        android:id="@+id/menu_edit_profile"
+        android:title="Edit Profile"
+        android:icon="@drawable/ic_edit"/>
+    <item
+        android:id="@+id/menu_bmi_calculator"
+        android:title="BMI Calculator"
+        android:icon="@drawable/ic_bmi"/>
+    <item
+        android:id="@+id/menu_amma_unavagam"
+        android:title="Amma Unavagam"
+        android:icon="@drawable/ic_food_placeholder"/>
+    <item
+        android:id="@+id/menu_settings"
+        android:title="Settings"
+        android:icon="@drawable/ic_settings"/>
+    <item
+        android:id="@+id/menu_logout"
+        android:title="Logout"
+        android:icon="@drawable/ic_logout"/>
+</menu>
